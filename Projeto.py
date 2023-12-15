@@ -56,6 +56,7 @@ import plotly.graph_objects as go
 from ipywidgets import widgets
 from art import *
 from tabulate import tabulate
+from functools import partial
 
 # %% [markdown]
 # ##### 2.2.1. Upload dos dados em bruto
@@ -362,10 +363,10 @@ def linhas():
 # ##### 2.3.2. Tabelas
 
 # %% [markdown]
-# A. DF0: Tabela Saúde Mental
+# A. Função para obter as tabelas dos dataframes
 
 # %%
-def tabela1():
+def tabela(df):
     # Solicitar o país
     country = input('Qual o país: ').capitalize()
     
@@ -373,7 +374,7 @@ def tabela1():
     print("=" * len(country), country, "=" * len(country), sep="\n")
     
     # Imprimir a tabela usando o tabulate
-    print(tabulate(df_0[df_0['Entity'] == country], headers=df_0.columns))
+    print(tabulate(df[df['Entity'] == country], headers='keys', tablefmt='fancy_grid'))
     
     # Aguardar que o utilizador pressione de Enter para continuar
     input("Pressione Enter para continuar...")
@@ -385,10 +386,10 @@ def tabela1():
     return True
 
 # %% [markdown]
-# B. DF1: Depressão em Homens e Mulheres (%) 
+# B. Função para obter as tabelas estatísticas
 
 # %%
-def tabela2():
+def tabela_describe(df):
     # Solicitar o país
     country = input('Qual o país: ').capitalize()
     
@@ -396,59 +397,13 @@ def tabela2():
     print("=" * len(country), country, "=" * len(country), sep="\n")
     
     # Imprimir a tabela usando o tabulate
-    print(tabulate(df_1[df_1['Entity'] == country], headers=df_1.columns))
+    print(tabulate(df[df['Entity'] == country].describe(), headers='keys', tablefmt='fancy_grid'))
     
     # Aguardar que o utilizador pressione de Enter para continuar
     input("Pressione Enter para continuar...")
     
     # Limpar a tela após pressionar Enter
-    clear_screen()
-    
-    # Retornar True para indicar que a tabela foi chamada
-    return True
-
-# %% [markdown]
-# C. Suicídio e Depressão na População
-
-# %%
-def tabela3():
-    # Solicitar o país
-    country = input('Qual o país: ').capitalize()
-    
-    # Imprimir o nome do país
-    print("=" * len(country), country, "=" * len(country), sep="\n")
-    
-    # Imprimir a tabela usando o tabulate
-    print(tabulate(df_2[df_2['Entity'] == country], headers=df_2.columns))
-    
-    # Aguardar que o utilizador pressione de Enter para continuar
-    input("Pressione Enter para continuar...")
-    
-    # Limpar a tela após pressionar Enter
-    clear_screen()
-    
-    # Retornar True para indicar que a tabela foi chamada
-    return True
-
-# %% [markdown]
-# D. DF3: Depressão na População
-
-# %%
-def tabela4():
-    # Solicitar o país
-    country = input('Qual o país: ').capitalize()
-    
-    # Imprimir o nome do país
-    print("=" * len(country), country, "=" * len(country), sep="\n")
-    
-    # Imprimir a tabela usando o tabulate
-    print(tabulate(df_3[df_3['Entity'] == country], headers=df_3.columns))
-    
-    # Aguardar que o utilizador pressione de Enter para continuar
-    input("Pressione Enter para continuar...")
-    
-    # Limpar a tela após pressionar Enter
-    clear_screen()
+    os.system('cls' if os.name == 'nt' else 'clear')
     
     # Retornar True para indicar que a tabela foi chamada
     return True
@@ -523,10 +478,14 @@ def graficos():
 def tabelas():
     # Lista de opções para o menu de tabelas, cada opção é um tuplo contendo o nome da tabela e a função associada
     opcoes = [
-        ("DF0: Tabela Saúde Mental", tabela1),
-        ("DF1: Depressão em Homens e Mulheres (%)", tabela2),
-        ("DF2: Suicídio e Depressão na População", tabela3),
-        ("DF3: Depressão na População", tabela4)
+        ("DF0: Tabela Saúde Mental", partial(tabela, df_0)),
+        ("DF1: Depressão em Homens e Mulheres (%)", partial(tabela, df_1)),
+        ("DF2: Suicídio e Depressão na População", partial(tabela, df_2)),
+        ("DF3: Depressão na População", partial(tabela, df_3)),
+        ("Estatísticas: Tabela Saúde Mental", partial(tabela_describe, df_0)),
+        ("Estatísticas: Depressão em Homens e Mulheres (%)", partial(tabela_describe, df_1)),
+        ("Estatísticas: Suicídio e Depressão na População", partial(tabela_describe, df_2)),
+        ("Estatísticas: Depressão na População", partial(tabela_describe, df_3))
     ]
 
     # Chama a função do menu e passa o título 'Tabelas' e a lista de opções
