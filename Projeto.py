@@ -487,7 +487,7 @@ def tabelas():
         ("Estatísticas: Suicídio e Depressão na População", partial(tabela_describe, df_2)),
         ("Estatísticas: Depressão na População", partial(tabela_describe, df_3))
     ]
-
+    
     # Chama a função do menu e passa o título 'Tabelas' e a lista de opções
     return menu('Tabelas', opcoes)
 
