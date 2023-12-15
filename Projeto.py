@@ -513,4 +513,17 @@ main()
 # %% [markdown]
 # ### 3. Conclusão 
 
+# %% [markdown]
+# O projeto aborda a análise de dados relacionados com a saúde mental a nível global, utilizando um conjunto de dados que inclui informações sobre a prevalência de vários distúrbios mentais em diferentes países ao longo do tempo. A abordagem adotada divide o problema em quatro partes principais: obtenção dos dados, tratamento dos dados, análise exploratória e configuração do menu com funções específicas.
+# 
+# Na etapa de obtenção dos dados, o conjunto de dados foi adquirido do Kaggle, um repositório de dados e modelos, e consiste em informações sobre distúrbios mentais, como esquizofrenia, transtorno bipolar, distúrbios alimentares, entre outros.
+# 
+# O tratamento dos dados envolveu operações para tornar o conjunto de dados utilizável. Foram realizadas operações de limpeza, reorganização e criação de novos dataframes para melhor estruturação dos dados. Além disso, foram identificadas sub-tabelas e índices para separação e posterior limpeza do dataframe principal.
+# 
+# A análise exploratória compreende a criação de gráficos e tabelas para proporcionar uma compreensão mais aprofundada do dataset. Dentre os gráficos, destacam-se um mapa mundial da depressão ao longo do tempo, um gráfico que relaciona as taxas de depressão e suicídio globalmente, um gráfico de barras que compara a prevalência de depressão em homens e mulheres, e um gráfico de linhas que ilustra a evolução dos principais problemas de saúde mental ao longo dos anos.
+# 
+# O menu interativo permite ao utilizador explorar os gráficos e tabelas de forma personalizada, escolhendo entre diversas opções de visualização e análise. As tabelas apresentam informações detalhadas sobre os dados de saúde mental, enquanto os gráficos proporcionam insights visuais sobre as tendências globais ao longo do tempo.
+# 
+# Em resumo, o projeto visa fornecer uma abordagem abrangente para entender e visualizar as tendências globais em saúde mental, explorando dados de forma interativa e informativa.
+
 
